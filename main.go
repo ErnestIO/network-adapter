@@ -48,10 +48,10 @@ func main() {
 		Client:     nc,
 		ValidTypes: getConnectorTypes("networks"),
 	}
-
+	t := Translator{}
 	log.Println("Setting up networks")
-	o.StandardSubscription(&c, "network.create", "router_type")
-	o.StandardSubscription(&c, "network.delete", "router_type")
+	o.TranslatedSubscription(&c, "network.create", "router_type", t)
+	o.TranslatedSubscription(&c, "network.delete", "router_type", t)
 
 	runtime.Goexit()
 }
