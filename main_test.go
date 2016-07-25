@@ -52,7 +52,7 @@ func TestBasicRedirections(t *testing.T) {
 		n.Subscribe("network.create.vcloud", func(msg *nats.Msg) {
 			chvcl <- true
 		})
-		n.Subscribe("network.create.fake-aws", func(msg *nats.Msg) {
+		n.Subscribe("network.create.aws-fake", func(msg *nats.Msg) {
 			chvfaws <- true
 		})
 		n.Subscribe("network.create.aws", func(msg *nats.Msg) {
@@ -94,8 +94,8 @@ func TestBasicRedirections(t *testing.T) {
 			})
 		})
 
-		Convey("When it receives a valid fake-aws message", func() {
-			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","router_type":"fake-aws","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
+		Convey("When it receives a valid aws-fake message", func() {
+			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","router_type":"aws-fake","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
 			Convey("Then it should redirect it to a fake connector", func() {
 				So(wait(chvfaws), ShouldBeNil)
 			})

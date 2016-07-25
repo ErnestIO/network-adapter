@@ -7,4 +7,4 @@ WORKDIR /go/src/github.com/ernestio/network-adapter
 
 RUN make deps && go install
 
-ENTRYPOINT /go/bin/network-adapter
+ENTRYPOINT ./entrypoint.sh

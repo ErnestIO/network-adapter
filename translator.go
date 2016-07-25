@@ -89,12 +89,10 @@ func (t Translator) BuilderToConnector(j []byte) []byte {
 	var output []byte
 	json.Unmarshal(j, &input)
 
-	println(input.RouterType)
-
 	switch input.RouterType {
-	case "vcloud", "fake-vcloud", "fake":
+	case "vcloud", "vcloud-fake", "fake":
 		output = t.builderToVCloudConnector(input)
-	case "aws", "fake-aws":
+	case "aws", "aws-fake":
 		output = t.builderToAwsConnector(input)
 	}
 
@@ -157,9 +155,9 @@ func (t Translator) ConnectorToBuilder(j []byte) []byte {
 	dec.Decode(&input)
 
 	switch input["_type"] {
-	case "vcloud", "fake-vcloud", "fake":
+	case "vcloud", "vcloud-fake", "fake":
 		output = t.vcloudConnectorToBuilder(j)
-	case "aws", "fake-aws":
+	case "aws", "aws-fake":
 		output = t.awsConnectorToBuilder(j)
 	}
 
