@@ -10,7 +10,9 @@ import (
 	"testing"
 	"time"
 
+	ecc "github.com/ernestio/ernest-config-client"
 	"github.com/nats-io/nats"
+
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -28,7 +30,7 @@ func waitTime(ch chan bool, timeout time.Duration) error {
 }
 
 func TestBasicRedirections(t *testing.T) {
-	n, _ := nats.Connect(os.Getenv("NATS_URI"))
+	n := ecc.NewConfig(os.Getenv("NATS_URI")).Nats()
 
 	Convey("Given this service is fully set up", t, func() {
 		chfak := make(chan bool)

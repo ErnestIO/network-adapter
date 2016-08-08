@@ -13,6 +13,7 @@ test:
 
 deps: dev-deps
 	go get -u github.com/r3labs/otomo
+	go get -u github.com/ernestio/ernest-config-client
 
 dev-deps:
 	go get -u github.com/golang/lint/golint
