@@ -75,6 +75,7 @@ type awsEvent struct {
 	DatacenterAccessToken string `json:"datacenter_access_token,omitempty"`
 	DatacenterAccessKey   string `json:"datacenter_access_key,omitempty"`
 	DatacenterVpcID       string `json:"datacenter_vpc_id,omitempty"`
+	NetworkType           string `json:"network_type"`
 	NetworkSubnet         string `json:"network_subnet"`
 	NetworkAWSID          string `json:"network_aws_id"`
 	DatacenterName        string `json:"datacenter_name,omitempty"`
@@ -134,7 +135,7 @@ func (t Translator) builderToAwsConnector(input builderEvent) []byte {
 	output.Uuid = input.Uuid
 	output.BatchID = input.BatchID
 	output.Service = input.Service
-	output.Type = input.RouterType
+	output.Type = input.NetworkType
 	output.DatacenterRegion = input.DatacenterRegion
 	output.DatacenterAccessToken = input.DatacenterAccessToken
 	output.DatacenterAccessKey = input.DatacenterAccessKey
