@@ -34,6 +34,7 @@ type builderEvent struct {
 	DatacenterRegion      string   `json:"datacenter_region"`
 	DatacenterAccessToken string   `json:"datacenter_token"`
 	DatacenterAccessKey   string   `json:"datacenter_secret"`
+	NetworkType           string   `json:"network_type"`
 	NetworkSubnet         string   `json:"network_subnet"`
 	NetworkAWSID          string   `json:"network_aws_id"`
 	VCloudURL             string   `json:"vcloud_url"`
