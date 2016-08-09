@@ -94,6 +94,9 @@ func (t Translator) BuilderToConnector(j []byte) []byte {
 	switch input.RouterType {
 	case "vcloud", "vcloud-fake", "fake":
 		output = t.builderToVCloudConnector(input)
+	}
+
+	switch input.NetworkType {
 	case "aws", "aws-fake":
 		output = t.builderToAwsConnector(input)
 	}
