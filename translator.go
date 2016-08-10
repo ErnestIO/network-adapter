@@ -144,7 +144,7 @@ func (t Translator) builderToAwsConnector(input builderEvent) []byte {
 	output.DatacenterAccessToken = input.DatacenterAccessToken
 	output.DatacenterAccessKey = input.DatacenterAccessKey
 	output.DatacenterVpcID = input.DatacenterName
-	output.NetworkSubnet = input.NetworkSubnet
+	output.NetworkSubnet = input.Range
 	output.NetworkAWSID = input.NetworkAWSID
 
 	body, _ := json.Marshal(output)
