@@ -88,14 +88,14 @@ func TestBasicRedirections(t *testing.T) {
 		})
 
 		Convey("When it receives a valid aws message", func() {
-			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","router_type":"aws","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
+			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","network_type":"aws","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
 			Convey("Then it should redirect it to a fake connector", func() {
 				So(wait(chvaws), ShouldBeNil)
 			})
 		})
 
 		Convey("When it receives a valid aws-fake message", func() {
-			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","router_type":"aws-fake","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
+			n.Publish("network.create", []byte(`{"_batch_id":"a","_uuid":"c","service":"aaa","network_type":"aws-fake","range":"10.1.1.10/24","datacenter_region":"r","datacenter_access_token":"t","datacenter_access_key":"k","datacenter_name":"n","network_subnet":"ns"}`))
 			Convey("Then it should redirect it to a fake connector", func() {
 				So(wait(chvfaws), ShouldBeNil)
 			})
