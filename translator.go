@@ -82,6 +82,7 @@ type awsEvent struct {
 	DatacenterName        string `json:"datacenter_name,omitempty"`
 	DatacenterUsername    string `json:"datacenter_username,omitempty"`
 	DatacenterPassword    string `json:"datacenter_password,omitempty"`
+	ErrorMessage          string `json:"error"`
 }
 
 type Translator struct{}
@@ -212,6 +213,12 @@ func (t Translator) awsConnectorToBuilder(j []byte) []byte {
 	output.DatacenterName = input.DatacenterVpcID
 	output.NetworkSubnet = input.NetworkSubnet
 	output.NetworkAWSID = input.NetworkAWSID
+
+	if input.ErrorMessage != "" {
+		output.Status = "errored"
+		output.ErrorCode = "0"
+		output.ErrorMessage = input.ErrorMessage
+	}
 
 	body, _ := json.Marshal(output)
 
