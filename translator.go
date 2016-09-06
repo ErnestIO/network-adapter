@@ -22,6 +22,7 @@ type builderEvent struct {
 	StartAddress          string   `json:"start_address,omitempty"`
 	EndAddress            string   `json:"end_address,omitempty"`
 	Gateway               string   `json:"gateway,omitempty"`
+	IsPublic              bool     `json:"is_public"`
 	DNS                   []string `json:"dns"`
 	Router                string   `json:"router"`
 	RouterType            string   `json:"router_type"`
@@ -79,6 +80,7 @@ type awsEvent struct {
 	NetworkType           string `json:"network_type"`
 	NetworkSubnet         string `json:"network_subnet"`
 	NetworkAWSID          string `json:"network_aws_id"`
+	NetworkIsPublic       bool   `json:"network_is_public"`
 	DatacenterName        string `json:"datacenter_name,omitempty"`
 	DatacenterUsername    string `json:"datacenter_username,omitempty"`
 	DatacenterPassword    string `json:"datacenter_password,omitempty"`
@@ -146,6 +148,7 @@ func (t Translator) builderToAwsConnector(input builderEvent) []byte {
 	output.DatacenterAccessKey = input.DatacenterAccessKey
 	output.DatacenterVpcID = input.DatacenterName
 	output.NetworkSubnet = input.Range
+	output.NetworkIsPublic = input.IsPublic
 	output.NetworkAWSID = input.NetworkAWSID
 
 	body, _ := json.Marshal(output)
@@ -213,6 +216,7 @@ func (t Translator) awsConnectorToBuilder(j []byte) []byte {
 	output.DatacenterName = input.DatacenterVpcID
 	output.NetworkSubnet = input.NetworkSubnet
 	output.NetworkAWSID = input.NetworkAWSID
+	output.IsPublic = input.NetworkIsPublic
 
 	if input.ErrorMessage != "" {
 		output.Status = "errored"
