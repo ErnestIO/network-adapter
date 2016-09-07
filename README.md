@@ -4,8 +4,8 @@ network Adapter gets input nats messages in order to create, update or delete ne
 
 ## Build status
 
-* master: [![CircleCI](https://circleci.com/gh/ErnestIO/network-adapter/tree/master.svg?style=svg)](https://circleci.com/gh/ErnestIO/network-adapter/tree/master)
-* develop: [![CircleCI](https://circleci.com/gh/ErnestIO/network-adapter/tree/develop.svg?style=svg)](https://circleci.com/gh/ErnestIO/network-adapter/tree/develop)
+* master: [![CircleCI](https://circleci.com/gh/ernestio/network-adapter/tree/master.svg?style=svg)](https://circleci.com/gh/ernestio/network-adapter/tree/master)
+* develop: [![CircleCI](https://circleci.com/gh/ernestio/network-adapter/tree/develop.svg?style=svg)](https://circleci.com/gh/ernestio/network-adapter/tree/develop)
 
 ## Installation
 
